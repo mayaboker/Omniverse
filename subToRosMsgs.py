@@ -57,11 +57,11 @@ def get_position_and_orientation():
       roll, pitch. yaw = euler_from_quaternion(quaternion)
       return (x,y,z,roll, pitch, yaw)
   
-  rclpy.init()
-  node = PositionListner()
-  rclpy.spin(node)
-  node.destroy_node()
-  rclpy.shutdown()
+    rclpy.init()
+    node = PositionListner()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
   try:
