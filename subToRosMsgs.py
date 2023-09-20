@@ -1,13 +1,15 @@
 import rospy
-import geometry_msgs.msg import PoseStamped, Quaternion
-ftom tf.transformations import euler_from_quaternion, quaternion_from_euler
+from geometry_msgs.msg import PoseStamped, Quaternion
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 import rclpy
 from rclpy.node import Node
+#from geometry_msgs.msg import PoseStamped, Quaternion
 
 topic_name_ros1 = 'CAM_POS'
 topic_name_ros2 = 'CAM_POS'
+
 def get_position_and_orientation():
-  #checl if ROS1 or ROS2 is running
+  #check if ROS1 or ROS2 is running
   is_ros1 = rospy.get_node_uri() is not None
   is_ros2 = not is_ros1
 
@@ -27,6 +29,7 @@ def get_position_and_orientation():
                   )
       roll, pitch. yaw = euler_from_quaternion(quaternion)
       return (x,y,z,roll, pitch. yaw)
+      
     rospy.Subscriber(topic_name_ros1, PoseStamped, callback_ros1)
     rospy.spin() # keep the ros1 node alive
 
@@ -60,8 +63,11 @@ def get_position_and_orientation():
   node.destroy_node()
   rclpy.shutdown()
 
-
-
+if __name__ == '__main__':
+  try:
+    get_position_and_orientation()
+  except rospy.ROSInterruptException:
+    pass
       
 
 
