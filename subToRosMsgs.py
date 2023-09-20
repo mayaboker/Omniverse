@@ -6,7 +6,7 @@ from rclpy.node import Node
 
 topic_name_ros1 = 'CAM_POS'
 topic_name_ros2 = 'CAM_POS'
-def get_position_amd_arientation():
+def get_position_and_orientation():
   #checl if ROS1 or ROS2 is running
   is_ros1 = rospy.get_node_uri() is not None
   is_ros2 = not is_ros1
