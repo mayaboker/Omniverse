@@ -28,7 +28,7 @@ def get_position_and_orientation():
                   msg.pose.orientation.w
                   )
       roll, pitch. yaw = euler_from_quaternion(quaternion)
-      return (x,y,z,roll, pitch. yaw)
+      return (x,y,z,roll, pitch, yaw)
       
     rospy.Subscriber(topic_name_ros1, PoseStamped, callback_ros1)
     rospy.spin() # keep the ros1 node alive
